@@ -10,14 +10,13 @@
 </head>
 
 <body class="text-center">
-    <header>
-        <h1>Cript & Descript</h1>
-    </header>
+    <div class="jumbotron">
 
-
-
-
-    <div class="jumbotron container">
+        <div class="text-center">
+            <h1 class="display-4">Cripto & Descripto</h1>
+            <p class="lead">Criptografe palavras e descriptografe, utilizando a criptografia de César!</p>
+            <hr class="my-4">
+        </div>
         <button class="btn btn-danger" onclick="aumentarChave()">-</button>
         <span id="chave">1</span>
         <button class="btn btn-success" onclick="diminuirChave()">+</button>
@@ -26,38 +25,30 @@
             <form>
                 <div class="container form-group col-md-4">
                     <tr>
-
                         <td><input placeholder="Insira sua palavra aqui..." class="form-control" type="text" name="palavra"
                                 id="palavra" /></td>
                     </tr>
                 </div>
             </form>
         </div>
-        <button class="btn btn-info" type="button" onclick="criptografar()" id="big">Cript</button>
-        <button class="btn btn-warning" type="button" onclick="descriptografar()" id="big">Dcript</button>
+        <button type="button" class="btn btn-primary" onclick="criptografar()" id="big">Criptografar</button>
+        <button type="button" class="btn btn-dark" onclick="descriptografar()" id="big">Descriptografar</button>
     </div>
 
-    <div class="container">
-        <h3>Lista de Palvras</h3>
-        <table class="table table-striped table-borderless">
-            <thead class="thead-dark">
-                <tr>
-                   <div class="row">
-                      <span class="text-center" id="saidaCrip"></span> 
-                   </div>
-                    
-                    <div class="row">
-                        <span class="text-center" id="saidaDescrip"></span>
-                    </div>
-                    
+    <div class="row-col card w-100">
+        <div class="card-body">
+            <h5 class="card-title">Sua palavra criptografada: </h5>
+            <span class="text-center" id="saidaCrip"></span>
+        </div>
+        <div class="card-body">
+            <h5 class="card-title">Sua palavra descriptografada: </h5>
+            <span class="text-center" id="saidaDescrip"></span>
+        </div>
+    </div>
 
+    <div class="row-col card w-50">
 
-                </tr>
-            </thead>
-        </table>
-
-
-        <!-- <input class="form-control mb-3" type="text" id="palavra"/> -->
+    </div>
 
 
 
@@ -65,7 +56,20 @@
 
 
 
-        <script src="js/index.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <script src="js/index.js"></script>
 </body>
 
 </html>
