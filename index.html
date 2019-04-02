@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,70 +8,64 @@
     <title>Cripto & Descripto - Godoy</title>
     <link rel="stylesheet" href="css/bootstrap.min.css">
 </head>
-<body>
-    <div class="jumbotron text-center">
-        <div>
+
+<body class="text-center">
+    <header>
         <h1>Cript & Descript</h1>
-        <button class="btn btn-outline-success" onclick="aumentarChave()">-</button>
+    </header>
+
+
+
+
+    <div class="jumbotron container">
+        <button class="btn btn-danger" onclick="aumentarChave()">-</button>
         <span id="chave">1</span>
-        <button class="btn btn-outline-danger" onclick="diminuirChave()">+</button>
+        <button class="btn btn-success" onclick="diminuirChave()">+</button>
+        <div class="justify-content-center">
+            <label for=""> </label>
+            <form>
+                <div class="container form-group col-md-4">
+                    <tr>
+
+                        <td><input placeholder="Insira sua palavra aqui..." class="form-control" type="text" name="palavra"
+                                id="palavra" /></td>
+                    </tr>
+                </div>
+            </form>
         </div>
+        <button class="btn btn-info" type="button" onclick="criptografar()" id="big">Cript</button>
+        <button class="btn btn-warning" type="button" onclick="descriptografar()" id="big">Dcript</button>
+    </div>
 
-        <div class="">
-        <input type="text" id="palavra"/>
-        </div>
-        <button onclick="criptografar()" id="big">Criptografar</button>
-        <button onclick="descriptografar()" id="big">Descriptografar</button>
-        <span id="saidaCrip"></span>
-        <span id="saidaDescrip"></span>
-</div>
-    <script>
-        var values = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
-        var chave = +document.getElementById("chave").innerHTML;
+    <div class="container">
+        <h3>Lista de Palvras</h3>
+        <table class="table table-striped table-borderless">
+            <thead class="thead-dark">
+                <tr>
+                   <div class="row">
+                      <span class="text-center" id="saidaCrip"></span> 
+                   </div>
+                    
+                    <div class="row">
+                        <span class="text-center" id="saidaDescrip"></span>
+                    </div>
+                    
 
-        function aumentarChave() {
-                if(chave > 1) {
-                    chave--;
-                    document.getElementById("chave").innerHTML = chave;
-                }
-            }
 
-            function diminuirChave() {
-                if(chave < 25) {
-                    chave++;
-                    document.getElementById("chave").innerHTML = chave;
-                }
-            }
+                </tr>
+            </thead>
+        </table>
 
-        function criptografar() {
-                var palavra = document.getElementById("palavra").value.toUpperCase();
-                var result = "";
 
-                for(var i = 0; i<palavra.length; i++){ //Passa por cada caracter do input
+        <!-- <input class="form-control mb-3" type="text" id="palavra"/> -->
 
-                    var posicaoDaLetraNoAlfabeto = palavra.charCodeAt(i)-64; //Identifica qual letra é do alfabeto
-                    var letraComDeslocamento = (posicaoDaLetraNoAlfabeto + chave) % 26; //Faz o deslocamento de César e mantém dentro do alfabeto (26 letras)
-                    letraComDeslocamento = letraComDeslocamento == 0 ? 26 : letraComDeslocamento; //MOD retornar 0 caso o resultado seja 26, tem que tratar isso
-                    result += values[letraComDeslocamento-1]; //Faz -1 porque a letra 1 (A) está no índice 0 do teu array.
-                }
 
-                document.getElementById("saidaCrip").innerHTML = result;
-            }
 
-            function descriptografar() {
-                var palavra = document.getElementById("palavra").value.toUpperCase();
-                var result = "";
 
-                for(var i = 0; i<palavra.length; i++){ //Passa por cada caracter do input
 
-                    var posicaoDaLetraNoAlfabeto = palavra.charCodeAt(i)-64; //Identifica qual letra é do alfabeto
-                    var letraComDeslocamento = (posicaoDaLetraNoAlfabeto - chave) % 26; //Faz o deslocamento de César e mantém dentro do alfabeto (26 letras)
-                    letraComDeslocamento = letraComDeslocamento == 0 ? 26 : letraComDeslocamento; //MOD retornar 0 caso o resultado seja 26, tem que tratar isso
-                    result += values[letraComDeslocamento-1]; //Faz -1 porque a letra 1 (A) está no índice 0 do teu array.
-                }
 
-                document.getElementById("saidaDescrip").innerHTML = result;
-            }
-    </script>
+
+        <script src="js/index.js"></script>
 </body>
+
 </html>
