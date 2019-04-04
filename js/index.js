@@ -1,23 +1,15 @@
 var values = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z");
         var chave = +document.getElementById("chave").innerHTML;
 
-        function aumentarChave() {
-                if(chave > 1) {
-                    chave--;
-                    document.getElementById("chave").innerHTML = chave;
-                }
-            }
+       
 
-            function diminuirChave() {
-                if(chave < 25) {
-                    chave++;
-                    document.getElementById("chave").innerHTML = chave;
-                }
-            }
+        var chave = parseInt(document.getElementById('chave').value)
+        
 
         function criptografar() {
                 var palavra = document.getElementById("palavra").value.toUpperCase();
                 var result = "";
+                var chave = parseInt(document.getElementById('chave').value)
 
                 for(var i = 0; i<palavra.length; i++){ //Passa por cada caracter do input
 
@@ -33,6 +25,7 @@ var values = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l
             function descriptografar() {
                 var palavra = document.getElementById("palavra").value.toUpperCase();
                 var result = "";
+                var chave = parseInt(document.getElementById('chave').value)
 
                 for(var i = 0; i<palavra.length; i++){ //Passa por cada caracter do input
 
