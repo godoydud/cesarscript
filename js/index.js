@@ -1,39 +1,54 @@
-var values = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"); //array do alfabeto
-        var chave = +document.getElementById("chave").innerHTML; //captura a chave do input com id chave
+let values = new Array("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"); //array do alfabeto
 
-       
+let chave = +document.getElementById("chave").innerHTML; //captura a chave do input com id chave
 
-        var chave = parseInt(document.getElementById('chave').value)
-        
 
-        function criptografar() {
-                var palavra = document.getElementById("palavra").value.toUpperCase();
-                var result = "";
-                var chave = parseInt(document.getElementById('chave').value)
+function criptografar() {
 
-                for(var i = 0; i<palavra.length; i++){ //for para ler todos caracteres da palavra digitada de acordo com o tamanho da palavra
+    let palavra = document.getElementById("palavra").value.toUpperCase();
+    let chave = parseInt(document.getElementById('chave').value)
 
-                    var posicaoDaLetraNoAlfabeto = palavra.charCodeAt(i)-64; //usa formula baseada na tabela asc para descobir o caractere digitado
-                    var letraComDeslocamento = (posicaoDaLetraNoAlfabeto + chave) % 26; //aplica o deslocamento da cifra de césar
-                    letraComDeslocamento = letraComDeslocamento == 0 ? 26 : letraComDeslocamento; 
-                    result += values[letraComDeslocamento-1]; //-1 porque a primeira letra(A) esta na posição 0 do vetor
-                }
+    let result = "";
+    for (let i = 0; i < palavra.length; i++) { // for para passar todos caracteres da string palavra
 
-                document.getElementById("saidaCrip").innerHTML = result; //saida da palavra criptografada
-            }
+        let posicaoDaLetraNoAlfabeto = values.indexOf(palavra.charAt(i)); //indexOf --> pega a posição de um elemento no array e 
+                                                                        //a posição é --> palavra.charAt(i)
 
-            function descriptografar() {
-                var palavra = document.getElementById("palavra").value.toUpperCase();
-                var result = "";
-                var chave = parseInt(document.getElementById('chave').value)
+        // aplicando deslocamento (criptografia)
+        let letraComDeslocamento = (posicaoDaLetraNoAlfabeto + chave) % 26;
+        letraComDeslocamento = letraComDeslocamento == 0 ? 26 : letraComDeslocamento;
 
-                for(var i = 0; i<palavra.length; i++){ 
+        // pega o valor da letra deslocada 
+        result += values[letraComDeslocamento]; 
+    }
 
-                    var posicaoDaLetraNoAlfabeto = palavra.charCodeAt(i)-64;
-                    var letraComDeslocamento = (posicaoDaLetraNoAlfabeto - chave) % 26;
-                    letraComDeslocamento = letraComDeslocamento == 0 ? 26 : letraComDeslocamento; 
-                    result += values[letraComDeslocamento-1]; 
-                }
+    document.getElementById("saidaCrip").innerHTML = result; //saida da palavra criptografada
+}
 
-                document.getElementById("saidaDescrip").innerHTML = result;
-            }
+function descriptografar() {
+
+    let palavra = document.getElementById("palavra").value.toUpperCase();         
+    let chave = parseInt(document.getElementById('chave').value)
+    
+    let result = "";
+
+    for (let i = 0; i < palavra.length; i++) { // for para todos caracteres da palavra
+
+        let posicaoDaLetraNoAlfabeto = values.indexOf(palavra.charAt(i));
+
+        // desloca a letra para tras (descriptografia)
+        var letraComDeslocamento = (posicaoDaLetraNoAlfabeto - chave) % 26;
+
+        /**
+         * se a letra for menor que 0 (pois estamos deslocando para tras 
+         * é preciso somar o numero negativo com 26)
+         */
+        letraComDeslocamento = letraComDeslocamento < 0 ? 26 + letraComDeslocamento : letraComDeslocamento;
+
+        result += values[letraComDeslocamento];
+    }
+
+    document.getElementById("saidaDescrip").innerHTML = result; // saida da palavra descriptografada
+}
+
+  
